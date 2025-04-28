@@ -179,10 +179,20 @@ const resetPassword = async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 };
+const deleteUser = async (req, res) => {
+  try {
+    await User.findByIdAndDelete(req.params.id);
+    res.json({ message: 'User deleted successfully' });
+  } catch (err) {
+    res.status(500).json({ message: 'Error deleting user' });
+  }
+};
+
 
 module.exports = {
   registerUser,
   loginUser,
   forgotPassword,
   resetPassword,
+  deleteUser,
 };

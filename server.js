@@ -15,6 +15,10 @@ connectDB();
 app.use(cors());
 app.use(express.json()); // Parse JSON request bodies
 
+const taskRoutes = require('./routes/task');
+app.use('/api/tasks', taskRoutes);
+
+
 // Start server
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
